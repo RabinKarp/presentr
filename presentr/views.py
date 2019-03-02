@@ -1,6 +1,14 @@
-from flask import render_template, Blueprint, request, redirect, flash
+from flask import render_template, request, redirect, flash
 from werkzeug.utils import secure_filename
-from app import app
+from presentr import app
+import os
+
+
+APP_ROOT = os.path.dirname(os.path.abspath(__file__))
+UPLOAD_FOLD = '/home/yvette/code/presentr/uploads'
+UPLOAD_FOLDER = os.path.join(APP_ROOT, UPLOAD_FOLD)
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
 
 @app.route('/')
 def index():
@@ -11,7 +19,8 @@ def index():
 def upload_file():
     if request.method == 'POST':
         f = request.files['file']
-        f.save(secure_filename(f.filename))
+        f.save(os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(f.filename))
+    return 'file saved successfully'
 
 
 if __name__ == '__main__':
