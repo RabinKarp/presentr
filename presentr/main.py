@@ -6,7 +6,7 @@ def complete_pipeline():
     Converts a video into a presentation from start to finish.
     '''
     vFile = videoretrieve.getVideoFile()
-    frameFolder = video_process.vid_to_frames(vFile, 100) # Only process the first 100 seconds
+    frameFolder = video_process.vid_to_frames(vFile, 420) # Only process the first 100 seconds
     shortened_pipeline(frameFolder)
 
 def shortened_pipeline(frameFolder):
@@ -17,8 +17,8 @@ def shortened_pipeline(frameFolder):
     frames = img_to_text.getFrameStack(frameFolder)
 
     # Currently just prints out the contents of the first two frames
-    for i in range(2):
-        print(img_to_text.getTextFromFrame(frames[i])) 
+    for f in frames: 
+        print(img_to_text.getTextFromFrame(f)) 
 
 bp = Blueprint('main', __name__, url_prefix='')
 
@@ -27,6 +27,8 @@ def index():
     return render_template('index.html')
 
 if __name__ == '__main__':
-    # complete_pipeline()
+    complete_pipeline()
     # shortened_pipeline("/Users/Vivek/Desktop/presentr/tests/vid/frames")
-    shortened_pipeline("/Users/Vivek/Desktop/presentr/tests/img")
+
+    # Just a very short unit test
+    # shortened_pipeline("/Users/Vivek/Desktop/presentr/tests/img")

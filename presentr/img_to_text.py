@@ -28,5 +28,5 @@ def getFrameStack(folderpath):
     '''
     Get the filepaths of all jpegs within a given folder. 
     '''
-    files = os.listdir(os.getcwd())
-    return ["{}/{}".format(os.getcwd(), file) for file in files]
+    files = os.listdir(folderpath)
+    return ["{}/{}".format(folderpath, file) for file in files]
