@@ -34,4 +34,4 @@ def frame_to_blackboard(frame):
 
 
 if __name__ == '__main__':
-    vid_to_frames('tests/vid/IMG_2645.MOV', 100)
+    vid_to_frames('../tests/vid/IMG_2645.MOV', 100)
