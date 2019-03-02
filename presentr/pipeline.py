@@ -1,5 +1,5 @@
 import videoretrieve, video_process, image_preprocess, img_to_text
-
+import pickle
 
 def complete_pipeline():
     '''
@@ -18,18 +18,31 @@ def shortened_pipeline(frameFolder):
     frames = img_to_text.getFrameStack(frameFolder)
 
     corpus = []
-    for f in frames: 
-        print(img_to_text.getTextFromFrame(f)) 
+    for f in frames:
+        corpus.append(img_to_text.getTextFromFrame(f)) 
 
-def pickled_corpus_pipeline():
+    return corpus
+
+def pickle_corpus(frameFolder):
+    '''
+    Pickles the corpus so we don't have to recompute it every time.
+    '''
+    corpus = shortened_pipeline(frameFolder)
+    sorted(corpus, key=lambda x: x[0])
+    f = open('pickles/corpus.pkl', 'wb')
+    pickle.dump(corpus, f)
+    f.close()
+
+def loaded_corpus_pipeline():
     '''
     TODO: Implement here!
     '''
-    pass
+    f = open('pickles/corpus.pkl', 'rb')
+    corpus = pickle.load(f)
+    print(corpus)
+    f.close()
 
 if __name__ == '__main__':
     # complete_pipeline()
-    shortened_pipeline("/Users/Vivek/Desktop/presentr/tests/vid/frames")
-
-    # Just a very short unit test
-    # shortened_pipeline("/Users/Vivek/Desktop/presentr/tests/img")
+    # pickle_corpus("/Users/Vivek/Desktop/presentr/tests/vid/frames")
+    loaded_corpus_pipeline()

@@ -51,6 +51,5 @@ Download from Google Drive linked [here](https://drive.google.com/drive/folders/
 ## Useful Widgets
 * jQuery: `https://blueimp.github.io/jQuery-File-Upload/`
 
-
 You also need to create a private key using the $100 of Google AWS credits,
 and enable the Google Machine Learning API.
