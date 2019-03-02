@@ -1,11 +1,9 @@
 from flask import Flask
 
 
-def create_app():
-    app = Flask(__name__)
-    
-    from presentr import main
-    app.register_blueprint(main.bp)
+UPLOAD_FOLDER = ''
+ALLOWED_EXTENSIONS = set('*.doc')
 
-    return app
-    
+app = Flask(__name__)
+app.config.from_object('config')
+from app import views    

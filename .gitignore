@@ -1,6 +1,8 @@
-# Ignore video binary
+# Video binary
 tests/vid/*.MOV
 tests/vid/frames/*.jpg
+
+.idea/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

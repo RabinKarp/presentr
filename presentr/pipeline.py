@@ -1,5 +1,5 @@
-from flask import render_template, Blueprint
 import videoretrieve, video_process, image_preprocess, img_to_text
+
 
 def complete_pipeline():
     '''
@@ -8,6 +8,7 @@ def complete_pipeline():
     vFile = videoretrieve.getVideoFile()
     frameFolder = video_process.vid_to_frames(vFile, 420) # Only process the first 100 seconds
     shortened_pipeline(frameFolder)
+
 
 def shortened_pipeline(frameFolder):
     '''
@@ -20,11 +21,6 @@ def shortened_pipeline(frameFolder):
     for f in frames: 
         print(img_to_text.getTextFromFrame(f)) 
 
-bp = Blueprint('main', __name__, url_prefix='')
-
-@bp.route('/')
-def index():
-    return render_template('index.html')
 
 if __name__ == '__main__':
     complete_pipeline()
@@ -32,3 +28,4 @@ if __name__ == '__main__':
 
     # Just a very short unit test
     # shortened_pipeline("/Users/Vivek/Desktop/presentr/tests/img")
+
