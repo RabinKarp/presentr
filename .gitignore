@@ -1,7 +1,6 @@
-# Video binary
 tests/vid/*.MOV
 tests/vid/frames/*.jpg
-
+uploads/
 .idea/
 
 # Byte-compiled / optimized / DLL files
