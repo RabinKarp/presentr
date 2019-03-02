@@ -19,7 +19,7 @@ def index():
 def upload_file():
     if request.method == 'POST':
         f = request.files['file']
-        f.save(os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(f.filename))
+        f.save(os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(f.filename)))
     return 'file saved successfully'
 
 
