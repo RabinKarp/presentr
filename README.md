@@ -30,6 +30,12 @@ used an intelligent stiching algorithm to combine all of the captured text
 into a single chronological transcript. Finally, we used pdfLaTeX to produce the
 Beamer output, and Flask to produce the live display.
 
+Presentr has the potential to make gigabytes of archived lecture videos easily searchable,
+will help instructors create lecture notes on the fly simply by writing on the chalkboard
+instead of preparing a separate set of notes ahead of time, will help students more
+easily find the content they need,  and can potentially provide
+a very useful handicap aid to help visually-impaired students learn more effectively. 
+
 ## Videos and Binaries
 Download from Google Drive linked [here](https://drive.google.com/drive/folders/1GFOxP-zjdEVjNgp8WtzqoANGYi23bgoj?usp=sharing)
 
