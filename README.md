@@ -13,7 +13,7 @@ Planning to use the Google Cloud API for handwriting recognition
 * Google cloud API's: `pip install --upgrade oauth2client`, `pip install --upgrade google-api-python-client`
 * Google Cloud Vision API:
 * Pyspellchecker: `pip install pyspellchecker`
-* Progressbar: 
+* OpenCV: `pip install opencv-python` 
 
 
 You also need to create a private key using the $100 of Google AWS credits,
