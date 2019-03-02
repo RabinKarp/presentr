@@ -10,15 +10,16 @@ def getTextFromFrame(fpath):
 
     fPath: The filename of the image to get text from
     '''
+    bname = os.path.basename(fpath)
     with io.open(fpath, 'rb') as image_file:
         content = image_file.read()
         image = vision.types.Image(content=content)
         response = client.document_text_detection(image=image)
 
-    # Tokenize the annotation based on the \n separator, then by spaces   
+    # Tokenize the annotation based on the \n separator, then by spaces. Affix the frame number to every line
     linelists = response.full_text_annotation.text.split("\n")
     wordlists = [line.split(" ") for line in linelists]
-
+    wordlists = [int(bname[5:-4]), wordlists]
     return wordlists 
 
 # Test

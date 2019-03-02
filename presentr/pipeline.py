@@ -17,15 +17,19 @@ def shortened_pipeline(frameFolder):
     '''
     frames = img_to_text.getFrameStack(frameFolder)
 
-    # Currently just prints out the contents of the first two frames
+    corpus = []
     for f in frames: 
         print(img_to_text.getTextFromFrame(f)) 
 
+def pickled_corpus_pipeline():
+    '''
+    TODO: Implement here!
+    '''
+    pass
 
 if __name__ == '__main__':
-    complete_pipeline()
-    # shortened_pipeline("/Users/Vivek/Desktop/presentr/tests/vid/frames")
+    # complete_pipeline()
+    shortened_pipeline("/Users/Vivek/Desktop/presentr/tests/vid/frames")
 
     # Just a very short unit test
     # shortened_pipeline("/Users/Vivek/Desktop/presentr/tests/img")
-

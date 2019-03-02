@@ -1,6 +1,6 @@
 # presentr
 Automated image-to-text decoding of board notes, automated presentation 
-creation, and visual-handicap accessibility features. Creted for Hacktech 2019.
+creation, and visual-handicap accessibility features. Created for Hacktech 2019.
 
 Modern university lecture halls are almost universally equipped with recording equipment
 to capture lectures, a blessing to students who would not otherwise be able to attend
@@ -41,11 +41,15 @@ Download from Google Drive linked [here](https://drive.google.com/drive/folders/
 
 ## Dependencies
 * Scikit Image: `conda install -c conda-forge scikit-image`
-* PIL: `conda install -c jim-hart pytesseract` 
+* PIL: TODO 
 * Google cloud API's: `pip install --upgrade oauth2client`, `pip install --upgrade google-api-python-client`
 * Google Cloud Vision API: `pip install --upgrade google-cloud-vision`
 * Pyspellchecker: `pip install pyspellchecker`
 * OpenCV: `pip install opencv-python` 
+* Flask: `pip install flask`
+
+## Useful Widgets
+* jQuery: `https://blueimp.github.io/jQuery-File-Upload/`
 
 
 You also need to create a private key using the $100 of Google AWS credits,
