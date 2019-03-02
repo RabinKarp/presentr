@@ -1,3 +1,7 @@
+# Ignore video binary
+tests/vid/*.MOV
+tests/vid/frames/*.jpg
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
