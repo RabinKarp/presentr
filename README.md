@@ -12,4 +12,5 @@ Planning to use the Google Cloud API for handwriting recognition
 * PIL: `conda install -c jim-hart pytesseract` 
 * Google cloud API's: `pip install --upgrade oauth2client`, `pip install --upgrade google-api-python-client`
 
-You also need to create a private key using the $100 of Google AWS credits.
+You also need to create a private key using the $100 of Google AWS credits,
+and enable the Google Machine Learning API.
