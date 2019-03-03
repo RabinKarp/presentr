@@ -28,6 +28,8 @@ def generate_frames(doc, lines):
 
 
 def main(lines, filename):
+    filename = os.path.join(os.path.dirname(__file__), '../generated/' + filename)
+    
     doc = Document(filename, documentclass='beamer')
     generate_frames(doc, lines)
     doc.generate_tex()

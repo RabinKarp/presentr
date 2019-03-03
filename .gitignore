@@ -1,6 +1,7 @@
 tests/vid/*.MOV
 tests/vid/frames/*.jpg
 uploads/
+generated/
 .idea/
 
 # Byte-compiled / optimized / DLL files
