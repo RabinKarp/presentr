@@ -1,8 +1,9 @@
 # presentr
 ![Image of Presentr](https://github.com/RabinKarp/presentr/blob/master/logo.png)
 
-Automated image-to-text decoding of board notes, automated presentation 
-creation, and visual-handicap accessibility features. Created for Hacktech 2019.
+Automated image-to-text decoding of chalkboard notes, automated presentation 
+creation, and potential applications for visual-handicap accessibility. Created for Hacktech 2019;
+built with Google Cloud Vision library.
 
 Modern university lecture halls are almost universally equipped with recording equipment
 to capture lectures, a blessing to students who would not otherwise be able to attend
