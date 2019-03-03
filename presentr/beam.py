@@ -2,7 +2,7 @@ from pylatex import Document, Section, Subsection, Itemize, Command
 from pylatex.package import Package
 from pylatex.utils import italic
 from pylatex.base_classes.containers import Environment
-import os
+import os, subprocess
 
 class Frame(Environment):
     escape = False
@@ -30,6 +30,22 @@ def generate(lineset, filename, title, author):
     generate_frames(doc, lineset)
     doc.generate_tex()
     doc.generate_pdf(clean_tex=False)
+
+    # This generates the Braille file
+    f = open(filename + ".txt", 'w')
+    f.write("{}\n{}\n\n".format(title, author))
+    for i in range(len(lineset)):
+        f.write("Board Contents at +{}:{}\n".format(int((30 * 3 * i) / 60), int((30 * 3 * i) % 60)))
+        lines = lineset[i]
+        for line in lines:
+            f.write(line + "\n")
+        f.write("\n")
+
+    f.close()
+    g = open(filename + "_braille.txt", 'w')
+    res = subprocess.call(["python3", "btrans/main.py", "../generated/output.txt", "-t"], stdout = g)
+    print(res)
+    g.close()    
 
 if __name__ == '__main__':
     lines = ['Computer very important', 'Turing machine very important', 'Here are some lines', \

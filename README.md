@@ -1,4 +1,6 @@
 # presentr
+![Image of Presentr](https://github.com/RabinKarp/presentr/blob/master/logo.png)
+
 Automated image-to-text decoding of board notes, automated presentation 
 creation, and visual-handicap accessibility features. Created for Hacktech 2019.
 
@@ -36,7 +38,16 @@ instead of preparing a separate set of notes ahead of time, will help students m
 easily find the content they need,  and can potentially provide
 a very useful handicap aid to help visually-impaired students learn more effectively. 
 
-## Videos and Binaries
+## Braille Translation
+The Braille Translation prototype is based on LazoCoder's text to Grade-2 Braille translator,
+freely available under GPL v3.0.
+
+The Brailler Translator Git repository needs to be downloaded to the inner presentr directory
+under the directory name `btrans`.
+
+Repository for Braille Translator: `https://github.com/LazoCoder/Braille-Translator`
+
+## Videos and Binaries for Testing
 Download from Google Drive linked [here](https://drive.google.com/drive/folders/1GFOxP-zjdEVjNgp8WtzqoANGYi23bgoj?usp=sharing)
 
 ## Dependencies
