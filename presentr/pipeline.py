@@ -54,5 +54,5 @@ if __name__ == '__main__':
     UPLOAD_FOLDER = os.path.join(APP_ROOT, UPLOAD_FOLD)
     print(UPLOAD_FOLDER)
 
-    pickle_corpus(UPLOAD_FOLDER)
-    # loaded_corpus_pipeline()
+    # pickle_corpus(UPLOAD_FOLDER)
+    loaded_corpus_pipeline()

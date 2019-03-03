@@ -47,7 +47,7 @@ Download from Google Drive linked [here](https://drive.google.com/drive/folders/
 * Pyspellchecker: `pip install pyspellchecker`
 * OpenCV: `pip install opencv-python` 
 * Flask: `pip install flask`
-* fuzzywuzzy: `pip install fuzzywuzzy`
+* fuzzywuzzy: `conda install -c conda-forge fuzzywuzzy`
 
 ## Useful Widgets
 * jQuery: `https://blueimp.github.io/jQuery-File-Upload/`
