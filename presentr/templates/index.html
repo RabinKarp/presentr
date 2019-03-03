@@ -3,12 +3,12 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <style>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <style type="text/css">
         * {
             font-family: "Monospace", Verdana, Geneva, Tahoma, sans-serif;
         }
-
+        
         body {
             display: block;
             margin: 0px;
@@ -45,7 +45,7 @@
 
         li a:hover,
         .dropdown:hover .dropbtn {
-            background-color: rgb(148, 46, 48);
+            background-color: rgb(255, 255, 255);
         }
 
         li.dropdown {
@@ -115,13 +115,45 @@
             height: 100%;
             background: grey; /* Random BG colour for unloaded video elements */
         }
+
+        input[type=text] {
+            padding:5px; 
+            border:2px solid #ccc; 
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+        }
+
+        input[type=text]:focus {
+            border-color:#333;
+        }
+
+
+        input[type=submit] {
+            padding:5px 15px; 
+            background:#0a0; 
+            border:0 none;
+            cursor:pointer;
+            -webkit-border-radius: 5px;
+            border-radius: 5px; 
+        }
+        #bannerimage {
+            width: 100%;
+            background-image: url(https://upload.wikimedia.org/wikipedia/commons/3/36/Inside_a_Harvard_Business_School_classroom.jpeg);
+            height: 405px;
+            background-color: purple;
+            background-position: center;
+        }
+        div.a {
+            text-align: center;
+            font-size: 50;
+        }
     </style>
     </head>
-
+    
     <body>
         <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#explore">Explore</a></li>
+            <li><a href="javascript:void(0)" class="dropbtn">Home</a></li>
+            <li><a href="javascript:void(0)" class="dropbtn">Explore</a></li>
             <li class="dropdown">
                 <a href="javascript:void(0)" class="dropbtn">University Courses</a>
                 <div class="dropdown-content">
@@ -132,14 +164,15 @@
                     <a href="#">UC San Diego</a>
                 </div>
             </li>
-            <li><a href="#Purchase">Buy</a></li>
-            <li><a href="#about">About</a></li>
+            <li><a href="javascript:void(0)" class="dropbtn">About</a></li>
         </ul>
+        <div id="header"></div>
+        <div id="bannerimage"></div>
 
-        <h1>Presentr</h1>
-        <p>Enabling the visually impaired to learn from Lecture Videos</p>
-        <br>
-        <p>Automated image-to-text decoding of board notes, presentation creation, and visually-handicap accessibility features. </p>
+
+
+        <h1><div class="a">Presentr</div></h1>
+        <p>Automated image-to-text decoding of chalkboard notes, automated presentation creation, and potential applications for visual-handicap accessibility. Created for Hacktech 2019; built with Google Cloud Vision library.</p>
 
         <p>Upload a lecture video: </p>
         <form action="http://localhost:5000/uploader" method="POST" enctype="multipart/form-data">
@@ -147,23 +180,36 @@
             <input type="submit"/>
         </form>
 
-        <h3> Example Video </h3>
-        <div class="row">
-            <div class="videoColumn" style="background-color: white;">
-                <div class="video-wrapper">
-                    <video class="video" id="video" onclick=playPause()></video>
-                    <source src="IMG_2645.MOV" type="video/mp4">
-                    Your browser does not support the video tag.
-                    </video>
-                </div>
-            </div>
-
-            <div class="column" style="background-color:#bbb;">
-                <h2>Transcript</h2>
-                <p>Some informational text</p>
-            </div>
-
-        </div>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                {% for message in messages %}
+                    <li><a href = "{{url_for('generated_file', filename=message)}}">{{message}}</a></li>
+                {% endfor %}
+                </ul>
+            {% endif%}
+        {% endwith %}
 
 </body>
+<footer class="site-footer h-card">
+    <data class="u-url" href="/"></data>
+  
+    <div class="wrapper">
+  
+      <h2 class="footer-heading">About the team</h2>
+  
+      <div class="footer-col-wrapper">
+        <div class="footer-col footer-col-1">
+          <ul class="contact-list">
+            <li class="p-name"></li><li><a class="u-email" href="mailto:your-email@example.com">yylin@caltech.edu, vbharadw@caltech.edu, kychow@caltech.edu,</a></li></ul>
+        </div>
+  
+        <div class="footer-col footer-col-3">
+          <p>Presentr was created by Yvette Lin, Vivek Bharadwaj, and Karena Chow from the California Institute of Technology using Google Cloud Vision.</p>
+        </div>
+      </div>
+  
+    </div>
+  
+  </footer>
 </html>

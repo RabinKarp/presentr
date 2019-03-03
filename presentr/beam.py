@@ -54,4 +54,4 @@ if __name__ == '__main__':
     lines = ['Computer very important', 'Turing machine very important', 'Here are some lines', \
             'wow even more lines', 'i hope this will work', 'maybe', 'try a hanging line']
     filename = 'hithere'
-    generate(lines, filename)
+    generate(lines, filename, "hello", "world")

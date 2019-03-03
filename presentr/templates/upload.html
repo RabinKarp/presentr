@@ -1,13 +1,185 @@
 <!doctype html>
 <html>
-    <title>Presentr</title>
-    <body>
-        <form action = "http://localhost:5000/uploader" method = "POST"
-            enctype = "multipart/form-data">
-            <input type = "file" name = "file" />
-            <input type = "submit" />
-        </form>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <style type="text/css">
+        * {
+            font-family: "Monospace", Verdana, Geneva, Tahoma, sans-serif;
+        }
         
+        body {
+            display: block;
+            margin: 0px;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: rgb(0, 140, 40);
+        }
+
+        .navigation-bar ul {
+            padding: 0px;
+            margin: 0px;
+            text-align: center;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        li {
+            float: right;
+        }
+
+        li a,
+        .dropbtn {
+            display: inline-block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover,
+        .dropdown:hover .dropbtn {
+            background-color: rgb(255, 255, 255);
+        }
+
+        li.dropdown {
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Create two equal columns that floats next to each other */
+        .column {
+            float: left;
+            width: 50%;
+            padding: 10px;
+            height: 300px;
+        }
+
+        .videoColumn {
+            float: left;
+            width: 50%;
+            padding: 0px;
+            height: 300px;
+        }
+
+        .videoColumn video {
+            min-width: 100%;
+            min-height: 100%;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 100%;
+            height: 0;
+        }
+
+        .video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: grey; /* Random BG colour for unloaded video elements */
+        }
+
+        input[type=text] {
+            padding:5px; 
+            border:2px solid #ccc; 
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+        }
+
+        input[type=text]:focus {
+            border-color:#333;
+        }
+
+
+        input[type=submit] {
+            padding:5px 15px; 
+            background:#0a0; 
+            border:0 none;
+            cursor:pointer;
+            -webkit-border-radius: 5px;
+            border-radius: 5px; 
+        }
+        #bannerimage {
+            width: 100%;
+            background-image: url(https://upload.wikimedia.org/wikipedia/commons/3/36/Inside_a_Harvard_Business_School_classroom.jpeg);
+            height: 405px;
+            background-color: purple;
+            background-position: center;
+        }
+        div.a {
+            text-align: center;
+            font-size: 50;
+        }
+    </style>
+    </head>
+    
+    <body>
+        <ul>
+            <li><a href="javascript:void(0)" class="dropbtn">Home</a></li>
+            <li><a href="javascript:void(0)" class="dropbtn">Explore</a></li>
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn">University Courses</a>
+                <div class="dropdown-content">
+                    <a href="#">Caltech</a>
+                    <a href="#">Berkeley</a>
+                    <a href="#">Stanford</a>
+                    <a href="#">Carnegie Mellon</a>
+                    <a href="#">UC San Diego</a>
+                </div>
+            </li>
+            <li><a href="javascript:void(0)" class="dropbtn">About</a></li>
+        </ul>
+        <div id="header"></div>
+        <div id="bannerimage"></div>
+
+
+
+        <h1><div class="a">Presentr</div></h1>
+        <p>Automated image-to-text decoding of chalkboard notes, automated presentation creation, and potential applications for visual-handicap accessibility. Created for Hacktech 2019; built with Google Cloud Vision library.</p>
+
+        <p>Upload a lecture video: </p>
+        <form action="http://localhost:5000/uploader" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" />
+            <input type="submit"/>
+        </form>
+
         {% with messages = get_flashed_messages() %}
             {% if messages %}
                 <ul>
@@ -17,5 +189,27 @@
                 </ul>
             {% endif%}
         {% endwith %}
-    </body>
+
+</body>
+<footer class="site-footer h-card">
+    <data class="u-url" href="/"></data>
+  
+    <div class="wrapper">
+  
+      <h2 class="footer-heading">About the team</h2>
+  
+      <div class="footer-col-wrapper">
+        <div class="footer-col footer-col-1">
+          <ul class="contact-list">
+            <li class="p-name"></li><li><a class="u-email" href="mailto:your-email@example.com">yylin@caltech.edu, vbharadw@caltech.edu, kychow@caltech.edu,</a></li></ul>
+        </div>
+  
+        <div class="footer-col footer-col-3">
+          <p>Presentr was created by Yvette Lin, Vivek Bharadwaj, and Karena Chow from the California Institute of Technology using Google Cloud Vision.</p>
+        </div>
+      </div>
+  
+    </div>
+  
+  </footer>
 </html>
