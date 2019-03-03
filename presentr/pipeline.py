@@ -7,7 +7,7 @@ def complete_pipeline():
     Converts a video into a presentation from start to finish.
     '''
     vFile = videoretrieve.getVideoFile()
-    frameFolder = video_process.vid_to_frames(vFile, 420) # Process 420 seconds of video 
+    frameFolder = video_process.vid_to_frames(vFile, 445) # Process 420 seconds of video 
     shortened_pipeline(frameFolder)
 
 
@@ -45,7 +45,7 @@ def loaded_corpus_pipeline():
     f.close()
 
     slide_contents = stich.stich(corpus)
-    beam.generate(slide_contents, 'test')
+    beam.generate(slide_contents, 'output', 'Fundamentals of Computation', 'Caltech Student')
 
 if __name__ == '__main__':
     # complete_pipeline()

@@ -17,19 +17,16 @@ def generate_frames(doc, linelist):
                 for line in lineset:
                     itemize.add_item(line)
 
-def generate(lineset, filename):
+def generate(lineset, filename, title, author):
     filename = os.path.join(os.path.dirname(__file__) + '/../generated/' + filename)
     
     doc = Document(filename, documentclass='beamer')
-<<<<<<< HEAD
-    # doc.preamble.append(Command('title', 'some title'))
-=======
-    doc.preamble.append(Command('title', 'some title'))
+    doc.preamble.append(Command('title', title))
+    doc.preamble.append(Command('author', author))
     
     with doc.create(Frame()):
         doc.append(Command('titlepage'))
 
->>>>>>> 710a130f2508b8c2312475218763c604d80b722f
     generate_frames(doc, lineset)
     doc.generate_tex()
     doc.generate_pdf(clean_tex=False)
@@ -37,11 +34,5 @@ def generate(lineset, filename):
 if __name__ == '__main__':
     lines = ['Computer very important', 'Turing machine very important', 'Here are some lines', \
             'wow even more lines', 'i hope this will work', 'maybe', 'try a hanging line']
-<<<<<<< HEAD
-    filename = 'machines'
-    generate(lines, filename)
-=======
     filename = 'hithere'
     generate(lines, filename)
-    
->>>>>>> 710a130f2508b8c2312475218763c604d80b722f
