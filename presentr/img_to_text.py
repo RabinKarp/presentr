@@ -30,6 +30,13 @@ def getFrameStack(folderpath):
     Get the filepaths of all jpegs within a given folder. 
     '''
     files = os.listdir(folderpath)
-    files.remove('.DS_Store')
-    files.remove('.empty')
+    
+    try:
+        files.remove('.DS_Store')
+    except:
+        pass
+    try:
+        files.remove('.empty')
+    except:
+        pass
     return ["{}/{}".format(folderpath, file) for file in files]

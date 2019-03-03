@@ -1,4 +1,5 @@
 import videoretrieve, video_process, image_preprocess, img_to_text
+import os
 import pickle
 
 def complete_pipeline():
@@ -48,6 +49,7 @@ if __name__ == '__main__':
     APP_ROOT = os.path.dirname(os.path.abspath(__file__))
     UPLOAD_FOLD = '../tests/vid/frames'
     UPLOAD_FOLDER = os.path.join(APP_ROOT, UPLOAD_FOLD)
+    print(UPLOAD_FOLDER)
 
     pickle_corpus(UPLOAD_FOLDER)
     # loaded_corpus_pipeline()
