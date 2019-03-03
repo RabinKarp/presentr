@@ -1,6 +1,7 @@
 from flask import render_template, request, redirect, flash, send_from_directory, send_file, url_for
 from werkzeug.utils import secure_filename
 from presentr import app
+import beam
 import os
 
 
@@ -31,10 +32,16 @@ def uploader_file():
         f = request.files['file']
         f.save(os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(f.filename)))
         
+<<<<<<< Updated upstream
         basename = f.filename.split('.')[0]
         
 
+=======
+>>>>>>> Stashed changes
         # TODO: generate beamer file and place in correct directory
+        #beam.final_pipeline(f.filename)
+
+        basename = f.filename.split('.')[0]
         
         flash(basename + '.tex')
         flash(basename + '.pdf')
