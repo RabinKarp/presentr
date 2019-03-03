@@ -5,10 +5,9 @@ import os
 
 
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
-UPLOAD_FOLD = '/home/yvette/code/presentr/uploads'
+UPLOAD_FOLD = '../uploads'
 UPLOAD_FOLDER = os.path.join(APP_ROOT, UPLOAD_FOLD)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
 
 @app.route('/')
 def index():
