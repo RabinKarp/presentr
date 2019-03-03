@@ -1,6 +1,11 @@
 from fuzzywuzzy import fuzz
 from fuzzywuzzy import process
 
+from fuzzyset import FuzzySet
+
+import enchant
+from enchant.checker import SpellChecker
+chkr = SpellChecker("en_UK","en_US")
 
 def preprocess(corpus):
     '''
@@ -27,22 +32,35 @@ def preprocess(corpus):
 def stich(corpus):
     corpus, allLines = preprocess(corpus)
     stiched = []
-    # print(proc_corpus)
-    print("Performing Corpus Stiching...")
 
-    # Start with a burn-in period:
-    stiched = corpus[40][1]
-    for i in range(41, len(corpus) - 0):
-        # Look at the last three lines of the stiched corpus
-        x = len(stiched)
-        for j in range (x - 4, x):
-            # Look at the second to last line 
-            cline = corpus[i][1][-2]
-            if fuzz.ratio(stiched[j], cline) > 40:
-                stiched[j] = cline
-                break
-            elif fuzz.partial_ratio(stiched[j], cline) < 10:
-                stiched.append(cline)
+    # Look over all lines, find the lines that have the fewest spelling errors
+    import enchant
+    from enchant.checker import SpellChecker  
+    chkr = SpellChecker("en_UK","en_US")
 
-    print(corpus)
+    goodlines = []
+    for line in allLines:
+        chkr.set_text(line)
+        numErrs = 0
+        for err in chkr:
+            numErrs += 1
+        if numErrs < 1 and len(line) > 10:
+            goodlines.append(line)
+
+    # Now eliminate things that are too similar to each other
+
+    for l1 in goodlines:
+        for l2 in goodlines:
+            if fuzz.partial_ratio(l1, l2) > 10 and l1 in goodlines:
+                goodlines.remove(l1)
+
+    lookup = FuzzySet(goodlines)
+
+    for i in range(0, len(corpus), 30):
+        capture = []
+        for line in corpus[i][1]:
+            capture.append(lookup.get(line)[0][1])
+
+        stiched.append(capture)
+
     return stiched

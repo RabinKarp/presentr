@@ -48,6 +48,7 @@ Download from Google Drive linked [here](https://drive.google.com/drive/folders/
 * OpenCV: `pip install opencv-python` 
 * Flask: `pip install flask`
 * fuzzywuzzy: `conda install -c conda-forge fuzzywuzzy`
+* fuzzyset: `pip install fuzzyset`
 
 ## Useful Widgets
 * jQuery: `https://blueimp.github.io/jQuery-File-Upload/`
