@@ -19,7 +19,7 @@ def getTextFromFrame(fpath):
     # Tokenize the annotation based on the \n separator, then by spaces. Affix the frame number to every line
     linelists = response.full_text_annotation.text.split("\n")
     wordlists = [line.split(" ") for line in linelists]
-    wordlists = [int(bname[5:-4]), wordlists]
+    wordlists = [int(bname[5:-4]), wordlists] 
     return wordlists 
 
 # Test

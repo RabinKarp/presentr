@@ -1,4 +1,4 @@
-import videoretrieve, video_process, image_preprocess, img_to_text
+import videoretrieve, video_process, image_preprocess, img_to_text, stich
 import pickle
 
 def complete_pipeline():
@@ -6,7 +6,7 @@ def complete_pipeline():
     Converts a video into a presentation from start to finish.
     '''
     vFile = videoretrieve.getVideoFile()
-    frameFolder = video_process.vid_to_frames(vFile, 420) # Only process the first 100 seconds
+    frameFolder = video_process.vid_to_frames(vFile, 420) # Process 420 seconds of video 
     shortened_pipeline(frameFolder)
 
 
@@ -28,19 +28,22 @@ def pickle_corpus(frameFolder):
     Pickles the corpus so we don't have to recompute it every time.
     '''
     corpus = shortened_pipeline(frameFolder)
-    sorted(corpus, key=lambda x: x[0])
+    corpus = sorted(corpus, key=lambda x: x[0])
     f = open('pickles/corpus.pkl', 'wb')
     pickle.dump(corpus, f)
     f.close()
 
 def loaded_corpus_pipeline():
     '''
-    TODO: Implement here!
+    Loads the corpus from the Pickle and proceeds with the Pipeline
     '''
     f = open('pickles/corpus.pkl', 'rb')
-    corpus = pickle.load(f)
-    print(corpus)
+
+    # This line not strictly necessary
+    corpus = sorted(pickle.load(f), key=lambda x : x[0])
     f.close()
+
+    stich.stich(corpus)
 
 if __name__ == '__main__':
     # complete_pipeline()
