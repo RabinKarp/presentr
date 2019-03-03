@@ -1,4 +1,4 @@
-import videoretrieve, video_process, image_preprocess, img_to_text, stich
+import videoretrieve, video_process, image_preprocess, img_to_text, stich, beam
 import os
 import pickle
 
@@ -44,11 +44,12 @@ def loaded_corpus_pipeline():
     corpus = sorted(pickle.load(f), key=lambda x : x[0])
     f.close()
 
-    stich.stich(corpus)
+    slide_contents = stich.stich(corpus)
+    beam.generate(slide_contents, 'test')
 
 if __name__ == '__main__':
     # complete_pipeline()
-    
+
     APP_ROOT = os.path.dirname(os.path.abspath(__file__))
     UPLOAD_FOLD = '../tests/vid/frames'
     UPLOAD_FOLDER = os.path.join(APP_ROOT, UPLOAD_FOLD)

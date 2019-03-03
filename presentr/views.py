@@ -33,6 +33,7 @@ def uploader_file():
         
         basename = f.filename.split('.')[0]
         
+
         # TODO: generate beamer file and place in correct directory
         
         flash(basename + '.tex')
