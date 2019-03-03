@@ -1,4 +1,5 @@
-import videoretrieve, video_process, image_preprocess, img_to_text, stich, beam
+from presentr import videoretrieve, video_process, image_preprocess, img_to_text, stich, beam
+from presentr import app
 import os
 import pickle
 
@@ -30,7 +31,7 @@ def pickle_corpus(frameFolder):
     '''
     corpus = shortened_pipeline(frameFolder)
     corpus = sorted(corpus, key=lambda x: x[0])
-    f = open('pickles/corpus.pkl', 'wb')
+    f = open(os.path.join(app.config['APP_ROOT'], 'pickles/corpus.pkl'), 'wb')
     pickle.dump(corpus, f)
     f.close()
 
@@ -38,14 +39,14 @@ def loaded_corpus_pipeline():
     '''
     Loads the corpus from the Pickle and proceeds with the Pipeline
     '''
-    f = open('pickles/corpus.pkl', 'rb')
+    f = open(os.path.join(app.config['APP_ROOT'], 'pickles/corpus.pkl'), 'rb')
 
     # This line not strictly necessary
     corpus = sorted(pickle.load(f), key=lambda x : x[0])
     f.close()
 
     slide_contents = stich.stich(corpus)
-    beam.generate(slide_contents, 'output', 'Fundamentals of Computation', 'Caltech Student')
+    beam.generate(slide_contents, 'output1', 'Fundamentals of Computation', 'Caltech Student')
 
 if __name__ == '__main__':
     # complete_pipeline()

@@ -1,6 +1,8 @@
 import cv2
 import os
 import math
+from presentr import app
+
 
 def vid_to_frames(filename, num_seconds):
     path = os.path.dirname(filename)
@@ -14,7 +16,7 @@ def vid_to_frames(filename, num_seconds):
     count = 0
     while success and count <= num_seconds * 24:
         if count % (24 * frameperiod) == 0:
-            frame_name = path + '/frames/frame%d.jpg' % count
+            frame_name = os.path.join(app.config['FRAME_FOLDER'], 'frame%d.jpg' % count)
             print(frame_name)
             cv2.imwrite(frame_name, image)
             print('Wrote ', frame_name)
@@ -29,7 +31,7 @@ def vid_to_frames(filename, num_seconds):
     print('Done!')
     
     # Returns the folder of the newly constructed frame stack
-    return path + '/frames'
+    return app.config['FRAME_FOLDER']
 
 def frame_to_blackboard(frame):
     # to do 
@@ -37,4 +39,4 @@ def frame_to_blackboard(frame):
 
 
 if __name__ == '__main__':
-    vid_to_frames('../tests/vid/IMG_2645.MOV', 100)
+    pass

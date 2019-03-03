@@ -3,6 +3,7 @@ from pylatex.package import Package
 from pylatex.utils import italic
 from pylatex.base_classes.containers import Environment
 import os, subprocess
+from presentr import app
 
 class Frame(Environment):
     escape = False
@@ -43,7 +44,9 @@ def generate(lineset, filename, title, author):
 
     f.close()
     g = open(filename + "_braille.txt", 'w')
-    res = subprocess.call(["python3", "btrans/main.py", "../generated/output.txt", "-t"], stdout = g)
+    pathname = app.config['APP_ROOT']
+    res = subprocess.call(["python3", os.path.join(pathname, "btrans/main.py"), \
+            os.path.join(pathname, "../generated/output.txt"), "-t"], stdout = g)
     print(res)
     g.close()    
 
