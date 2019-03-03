@@ -21,6 +21,10 @@ def generate(lineset, filename):
     
     doc = Document(filename, documentclass='beamer')
     doc.preamble.append(Command('title', 'some title'))
+    
+    with doc.create(Frame()):
+        doc.append(Command('titlepage'))
+
     generate_frames(doc, lineset)
     doc.generate_tex()
     doc.generate_pdf(clean_tex=False)
@@ -28,6 +32,6 @@ def generate(lineset, filename):
 if __name__ == '__main__':
     lines = ['Computer very important', 'Turing machine very important', 'Here are some lines', \
             'wow even more lines', 'i hope this will work', 'maybe', 'try a hanging line']
-    filename = 'machines'
+    filename = 'hithere'
     generate(lines, filename)
     
