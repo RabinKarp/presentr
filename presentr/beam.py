@@ -9,9 +9,10 @@ class Frame(Environment):
     content_separator = '\n'
 
 def generate_frames(doc, linelist):
-    for lineset in linelist: 
+    for i in range(len(linelist)):
+        lineset = linelist[i]
         with doc.create(Frame()):
-            doc.append(Command('frametitle', 'some frame title'))
+            doc.append(Command('frametitle', 'Board Contents at +{}:{}'.format(int((30 * 3 * i) / 60), int((30 * 3 * i) % 60))))
             with doc.create(Itemize()) as itemize:
                 for line in lineset:
                     itemize.add_item(line)
@@ -20,7 +21,7 @@ def generate(lineset, filename):
     filename = os.path.join(os.path.dirname(__file__) + '/../generated/' + filename)
     
     doc = Document(filename, documentclass='beamer')
-    doc.preamble.append(Command('title', 'some title'))
+    # doc.preamble.append(Command('title', 'some title'))
     generate_frames(doc, lineset)
     doc.generate_tex()
     doc.generate_pdf(clean_tex=False)
@@ -30,4 +31,3 @@ if __name__ == '__main__':
             'wow even more lines', 'i hope this will work', 'maybe', 'try a hanging line']
     filename = 'machines'
     generate(lines, filename)
-    
