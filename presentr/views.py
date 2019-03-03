@@ -33,8 +33,7 @@ def uploader_file():
         
         basename = f.filename.split('.')[0]
         
-        # TODO: change to a redirect to a page (or flash) that links to the generated files
-        # to download -- basename.pdf and basename.tex
+        # TODO: generate beamer file and place in correct directory
         
         flash(basename + '.tex')
         flash(basename + '.pdf')
