@@ -35,16 +35,24 @@ def upload_file():
 @app.route('/uploader', methods=['GET', 'POST'])
 def uploader_file():
     if request.method == 'POST':
+        to_remove = glob.glob(os.path.join(app.config['UPLOAD_FOLDER'], '*'))
+        for f in to_remove:
+            os.remove(f)
+        
+        to_remove = glob.glob(os.path.join(app.config['GENERATED_FOLDER'], '*'))
+        for f in to_remove:
+            os.remove(f)
+
         f = request.files['file']
         f.save(os.path.join(app.config['UPLOAD_FOLDER'], secure_filename('infile')))
       
         frameFolder = app.config['FRAME_FOLDER']
-        #pipeline.complete_pipeline()
-        #pipeline.pickle_corpus(frameFolder)
+        pipeline.complete_pipeline()
+        pipeline.pickle_corpus(frameFolder)
         pipeline.loaded_corpus_pipeline()
         
-        files = glob.glob(os.path.join(frameFolder, '*'))
-        for f in files:
+        to_remove = glob.glob(os.path.join(frameFolder, '*'))
+        for f in to_remove:
             os.remove(f)
 
         flash('output1.tex')
