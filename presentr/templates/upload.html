@@ -1,10 +1,21 @@
 <!doctype html>
 <html>
+    <title>Presentr</title>
     <body>
         <form action = "http://localhost:5000/uploader" method = "POST"
             enctype = "multipart/form-data">
             <input type = "file" name = "file" />
             <input type = "submit" />
         </form>
+        
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                {% for message in messages %}
+                    <li><a href = "{{url_for('generated_file', filename=message)}}">{{message}}</a></li>
+                {% endfor %}
+                </ul>
+            {% endif%}
+        {% endwith %}
     </body>
 </html>

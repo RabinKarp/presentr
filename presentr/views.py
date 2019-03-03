@@ -1,4 +1,4 @@
-from flask import render_template, request, redirect, flash, send_from_directory, send_file
+from flask import render_template, request, redirect, flash, send_from_directory, send_file, url_for
 from werkzeug.utils import secure_filename
 from presentr import app
 import os
@@ -31,12 +31,14 @@ def uploader_file():
         f = request.files['file']
         f.save(os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(f.filename)))
         
-        basename = f.filename.split('.')[1]
+        basename = f.filename.split('.')[0]
         
         # TODO: change to a redirect to a page (or flash) that links to the generated files
         # to download -- basename.pdf and basename.tex
         
-        return 'file saved successfully'
+        flash(basename + '.tex')
+        flash(basename + '.pdf')
+        return redirect(url_for('upload_file'))
     return render_template('upload.html')
 
 
